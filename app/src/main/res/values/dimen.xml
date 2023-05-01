@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_grid_padding_left">32dp</dimen>
+    <dimen name="main_grid_padding_right">32dp</dimen>
+    <dimen name="main_grid_fading_edge_length">48dp</dimen>
+    <dimen name="icon_inset">10dp</dimen>
+    <dimen name="glow_width">20dp</dimen>
+
+</resources>

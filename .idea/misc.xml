@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/button_background.xml" value="0.233" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/button_dialog.xml" value="0.233" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/default_background.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_exit.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_exit_focused.xml" value="0.125" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_globe.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_globe_focused.xml" value="0.125" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_home.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_home_focused.xml" value="0.125" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_paw_outline_svgrepo_com__1_.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_people.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_people_focused.xml" value="0.125" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_tag.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_tag_focused.xml" value="0.125" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/ic_test.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/row_item_focus_indicator.xml" value="0.1605" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/selector_glow.xml" value="0.232" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/transparent.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/drawable/video_selection_border.xml" value="0.234" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_details.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_global_item.xml" value="0.1951774340309372" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_movie.xml" value="0.1951774340309372" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_season.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/button_background.xml" value="0.1951774340309372" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/card_view.xml" value="0.1942675159235669" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/default_screen.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/dialog_exit.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_custom_browse.xml" value="0.10400000000000001" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_global.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_global_item.xml" value="0.144" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_icon2.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_icon3.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_icon4.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_movie.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_tag.xml" value="0.1921875" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/item_state.xml" value="0.1921875" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/list_item_default.xml" value="0.1921875" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/main_item.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_item.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_video.xml" value="0.176" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_video_xml.xml" value="0.1" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/video_details_row_item.xml" value="0.1942675159235669" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/video_item.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

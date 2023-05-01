@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="Theme.Britalians" parent="@style/Theme.Leanback" />
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+</resources>

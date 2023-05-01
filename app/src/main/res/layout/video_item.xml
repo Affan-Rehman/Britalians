@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/video_thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="3dp"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:id="@+id/video_selection_border"
+            android:layout_width="106dp"
+            android:layout_height="106dp"
+            android:background="@drawable/video_selection_border"
+            android:visibility="invisible" />
+
+</FrameLayout>

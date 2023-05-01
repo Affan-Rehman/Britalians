@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_browse_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/icon_layout"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:addStatesFromChildren="true"
+        android:descendantFocusability="afterDescendants"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/home"
+            android:layout_width="50dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/font3"
+            android:focusableInTouchMode="true"
+            android:nextFocusUp="@id/exit"
+            android:nextFocusDown="@id/globe"
+            android:background="@drawable/ic_home"
+            android:translationZ="4dp" />
+
+        <TextView
+            android:id="@+id/globe"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/font3"
+            android:layout_marginVertical="10dp"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/ic_globe"
+            android:translationZ="4dp" />
+
+        <TextView
+            android:id="@+id/people"
+            android:layout_width="50dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/font3"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusUp="@id/globe"
+            android:nextFocusDown="@id/tag"
+            android:background="@drawable/ic_people"
+            android:translationZ="4dp" />
+
+        <TextView
+            android:id="@+id/tag"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/font3"
+            android:layout_marginVertical="10dp"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusUp="@id/people"
+            android:nextFocusDown="@id/exit"
+            android:background="@drawable/ic_tag"
+            android:translationZ="4dp" />
+
+        <TextView
+            android:id="@+id/exit"
+            android:layout_width="50dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/font3"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusUp="@id/tag"
+            android:nextFocusDown="@id/home"
+            android:background="@drawable/ic_exit"
+            android:translationZ="4dp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_one"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+
+</LinearLayout>
+
