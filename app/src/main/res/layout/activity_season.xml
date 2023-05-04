@@ -73,7 +73,7 @@
             android:id="@+id/selected_video_thumbnail"
             android:layout_width="500dp"
             android:layout_height="320dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

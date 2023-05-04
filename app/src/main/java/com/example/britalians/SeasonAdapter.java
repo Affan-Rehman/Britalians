@@ -1,14 +1,11 @@
 package com.example.britalians;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,15 +25,14 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.SeasonView
         this.onVideoFocusedListener = onVideoFocusedListener;
     }
 
-    @NonNull
     @Override
-    public SeasonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SeasonViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item, parent, false);
         return new SeasonViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SeasonViewHolder holder, int position) {
+    public void onBindViewHolder( SeasonViewHolder holder, int position) {
         Season season = seasonList.get(position);
         holder.text.setText(season.title);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
@@ -54,7 +50,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.SeasonView
         RecyclerView recyclerView;
         TextView text;
 
-        public SeasonViewHolder(@NonNull View itemView) {
+        public SeasonViewHolder( View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.row_title);
             recyclerView = itemView.findViewById(R.id.row_recycler_view);

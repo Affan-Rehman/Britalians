@@ -91,23 +91,23 @@ public class MainActivity extends FragmentActivity {
                 if (hasFocus) {
                     if (v == findViewById(R.id.home)) {
                         v.setBackground(null);
-                        home.setText("home");
+                        home.setText("HOME");
                     }
                     else if (v == findViewById(R.id.globe)){
                         v.setBackground(null);
-                        globe.setText("globe");
+                        globe.setText("STATES");
                     }
                     else if (v == findViewById(R.id.people)){
                         v.setBackground(null);
-                        people.setText("people");
+                        people.setText("HUMANS");
                     }
                     else if  (v == findViewById(R.id.tag)){
                         v.setBackground(null);
-                        tag.setText("tag");
+                        tag.setText("BRANDS");
                     }
                     else if  (v == findViewById(R.id.exit)){
                         v.setBackground(null);
-                        exit.setText("exit");
+                        exit.setText("EXIT");
                     }
                     }
                 else {

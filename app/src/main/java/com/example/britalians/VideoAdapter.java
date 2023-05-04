@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -25,20 +24,18 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         this.onVideoFocusedListener = onVideoFocusedListener;
     }
 
-    @NonNull
     @Override
-    public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public VideoViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
         return new VideoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
+    public void onBindViewHolder( VideoViewHolder holder, int position) {
         Video video = videoList.get(position);
         Glide.with(holder.itemView.getContext())
-                .load(video.thumbnail169)
+                .load(video.media.thumbnail_url)
                 .into(holder.thumbnail);
-
         holder.itemView.setOnFocusChangeListener((view, hasFocus) -> {
             if (hasFocus) {
                 holder.itemView.setBackgroundResource(R.drawable.video_selection_border);
@@ -59,7 +56,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     static class VideoViewHolder extends RecyclerView.ViewHolder {
         ImageView thumbnail;
 
-        public VideoViewHolder(@NonNull View itemView) {
+        public VideoViewHolder( View itemView) {
             super(itemView);
             thumbnail = itemView.findViewById(R.id.video_thumbnail);
         }

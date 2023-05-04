@@ -3,6 +3,7 @@ package com.example.britalians;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+
+import java.util.Objects;
 
 
 public class MainFragment extends Fragment implements VideoAdapter.OnVideoSelectedListener,VideoAdapter.OnVideoFocusedListener {
@@ -50,11 +53,10 @@ public class MainFragment extends Fragment implements VideoAdapter.OnVideoSelect
         content = view.findViewById(R.id.content);
         logo = view.findViewById(R.id.logo);
         mainRecyclerView = view.findViewById(R.id.main_recycler_view);
-        rows.rows.remove(0);
         LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mainRecyclerView.setLayoutManager(verticalLayoutManager);
 
-        RowAdapter rowAdapter = new RowAdapter(this,rows.rows, getContext(), this, this, rows.serieList);
+        RowAdapter rowAdapter = new RowAdapter(this,rows.rows, getContext(), this, this, rows.serieList,rows.counter);
         mainRecyclerView.setAdapter(rowAdapter);
 
 
@@ -85,6 +87,8 @@ public class MainFragment extends Fragment implements VideoAdapter.OnVideoSelect
         Glide.with(this)
                 .load(video.thumbnail169)
                 .into(selectedVideoThumbnail);
+        if(Objects.equals(video.rating, ""))
+            video.rating = "16+";
         season_size.setText(video.releaseyear + "      " + video.rating + "      " + video.duration);
         video_desc.setText(video.description);
         content.setText(video.title);

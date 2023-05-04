@@ -3,6 +3,7 @@ package com.example.britalians;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -19,7 +20,8 @@ public class myXmlParser {
     public static RowList parseXml(Context context,String xmlUrl) throws XmlPullParserException, IOException {
         List<Row> rows = new ArrayList<>();
         SerieList serieList = new SerieList();
-        String TAG = "Parsing";
+        int count = 0;
+        int counter = 0;
 //        URL url = new URL(xmlUrl);
 //        XmlPullParser parser = Xml.newPullParser();
 //        parser.setInput(url.openStream(), null);
@@ -35,12 +37,11 @@ public class myXmlParser {
         boolean seriesCheck = true;
         VideoDetailsRow currentVideoDetailsRow = null;
         RowItems currentRowItem = null;
-
+        boolean checkOne = false;
 
         boolean check = true;
         while (eventType != XmlPullParser.END_DOCUMENT) {
             String tagName = parser.getName();
-
             switch (eventType) {
                 case XmlPullParser.START_TAG:
                     if(checkTitle) {
@@ -48,21 +49,25 @@ public class myXmlParser {
                             currentRow = new Row(null, new ArrayList<>());
                         }
                         else if (currentRow != null) {
+
                             if (currentVideo == null && "title".equals(tagName)) {
                                 currentRow.title = parser.nextText();
+//                                Log.d(TAG, currentRow.title +" "+ counter) ;
                                 seriesCheck = Objects.equals(currentRow.title, "Series");
                                 checkTitle = false;
+
                                 if (seriesCheck) {
                                     currentRow = null;
+                                    count = counter;
                                 }
+                                counter++;
                             }
                         }
                     }
 
-                       else  if(!seriesCheck && !checkTitle) {
+                       else  if(!seriesCheck) {
                             if (currentVideo == null && "item".equals(tagName)) {
-                                    currentVideo = new Video();
-
+                                currentVideo = new Video();
                             }
                             else if (currentVideo != null && currentVideoDetailsRow == null) {            //dealing with video here
                                 if (tagName.equals("id")) {
@@ -113,17 +118,17 @@ public class myXmlParser {
                                             case "dim":
                                                 media.dim = readText(parser);
                                                 break;
-                                            case "media:description":
+                                            case "description":
                                                 media.description = readText(parser);
                                                 break;
-                                            case "media:keywords":
+                                            case "keywords":
                                                 media.keywords = readText(parser);
                                                 break;
-                                            case "media:thumbnail":
+                                            case "thumbnail":
                                                 media.thumbnail_url = parser.getAttributeValue(null, "url");
                                                 parser.nextTag();
                                                 break;
-                                            case "media:title":
+                                            case "title":
                                                 media.title = readText(parser);
                                                 break;
                                         }
@@ -318,9 +323,7 @@ public class myXmlParser {
                             } else if ("row".equals(tagName) && currentRow != null) {
                                 rows.add(currentRow);
                                 currentRow = null;
-                                if (!seriesCheck) {
-                                    checkTitle = true;
-                                }
+                                checkTitle = true;
                             }
                         }
                         else {
@@ -343,6 +346,7 @@ public class myXmlParser {
                             }
                             else if("row".equals(tagName)){
                                 seriesCheck = false;
+                                checkTitle = true;
                             }
                         }
                     }
@@ -350,8 +354,7 @@ public class myXmlParser {
             }
             eventType = parser.next();
         }
-
-        return new RowList(rows,serieList);
+        return new RowList(rows,serieList,count);
     }
 
 

@@ -5,15 +5,15 @@
 
         <ImageView
             android:id="@+id/video_thumbnail"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
             android:layout_margin="3dp"
             android:scaleType="centerCrop" />
 
         <View
             android:id="@+id/video_selection_border"
-            android:layout_width="106dp"
-            android:layout_height="106dp"
+            android:layout_width="130dp"
+            android:layout_height="180dp"
             android:background="@drawable/video_selection_border"
             android:visibility="invisible" />
 

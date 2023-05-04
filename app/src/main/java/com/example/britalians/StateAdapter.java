@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,15 +22,15 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateHolder>
         this.fragment = fragment;
     }
 
-    @NonNull
+    
     @Override
-    public StateHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StateHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
         return new StateHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StateHolder holder, int position) {
+    public void onBindViewHolder( StateHolder holder, int position) {
         RowItems rowItem = rowItemsList.get(position);
         Glide.with(holder.itemView)
                 .load(rowItem.details_thumbnail)
@@ -64,7 +63,7 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateHolder>
         ImageView imageView;
         View focusBorder;
 
-        public StateHolder(@NonNull View itemView) {
+        public StateHolder( View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
             focusBorder = itemView.findViewById(R.id.focus_border);

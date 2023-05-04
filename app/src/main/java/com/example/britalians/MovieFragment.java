@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Objects;
+
 
 public class MovieFragment extends Fragment {
     Button play;
@@ -52,7 +54,8 @@ public class MovieFragment extends Fragment {
         VideoDetailsRowAdapter videoDetailsRowAdapter = new VideoDetailsRowAdapter(video.getVideoDetailsRows(),getContext());
         recyclerView.setAdapter(videoDetailsRowAdapter);
 
-
+        if(Objects.equals(video.rating, ""))
+            video.rating = "16+";
         season_size.setText(video.releaseyear + "      " + video.rating + "      " + video.duration);
         Glide.with(this).load(video.serieslogo).into(logo);
         hd.setVisibility(View.VISIBLE);
@@ -70,6 +73,8 @@ public class MovieFragment extends Fragment {
                 Glide.with(this).load(focusedRowItem.details_thumbnail169).into(top_right);
             }
             else if (newFocus != null && newFocus.getId() == R.id.play_button) {
+                if(Objects.equals(video.rating, ""))
+                    video.rating = "16+";
                 season_size.setText(video.releaseyear + "      " + video.rating + "      " + video.duration);
                 Glide.with(this).load(video.serieslogo).into(logo);
                 hd.setVisibility(View.VISIBLE);

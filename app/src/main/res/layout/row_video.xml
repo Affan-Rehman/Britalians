@@ -12,14 +12,14 @@
 
         <ImageView
             android:id="@+id/details_thumbnail"
-            android:layout_width="70dp"
-            android:layout_height="90dp"
-            android:layout_margin="5dp"
+            android:layout_width="125dp"
+            android:layout_height="140dp"
+            android:layout_margin="3dp"
             android:scaleType="centerCrop" />
         <View
             android:id="@+id/row_item_focus_indicator"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="145dp"
             android:background="@drawable/row_item_focus_indicator"
             android:visibility="invisible" />
     </FrameLayout>

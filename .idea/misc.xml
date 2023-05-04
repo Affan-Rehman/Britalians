@@ -29,12 +29,12 @@
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_movie.xml" value="0.1951774340309372" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/activity_season.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/button_background.xml" value="0.1951774340309372" />
-        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/card_view.xml" value="0.1942675159235669" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/card_view.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/default_screen.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/dialog_exit.xml" value="0.1" />
-        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_custom_browse.xml" value="0.10400000000000001" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_custom_browse.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_global.xml" value="0.1" />
-        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_global_item.xml" value="0.144" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_global_item.xml" value="0.10126582278481013" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_icon2.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_icon3.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/fragment_icon4.xml" value="0.1" />
@@ -44,10 +44,10 @@
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/list_item_default.xml" value="0.1921875" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/main_item.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_item.xml" value="0.1" />
-        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_video.xml" value="0.176" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_video.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/row_video_xml.xml" value="0.1" />
         <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/video_details_row_item.xml" value="0.1942675159235669" />
-        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/video_item.xml" value="0.2" />
+        <entry key="..\:/Java projects/Britalians/app/src/main/res/layout/video_item.xml" value="0.1" />
       </map>
     </option>
   </component>

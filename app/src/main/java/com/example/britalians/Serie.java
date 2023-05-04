@@ -254,10 +254,12 @@ class Row {
 
 class RowList {
     List<Row> rows;
+    int counter = 0;
     SerieList serieList;
-     public RowList(List<Row> rows,SerieList serieList) {
+     public RowList(List<Row> rows,SerieList serieList,int counter) {
         this.serieList  = serieList;
          this.rows = rows;
+         this.counter = counter;
     }
     public RowList(){
             rows = new ArrayList<>();

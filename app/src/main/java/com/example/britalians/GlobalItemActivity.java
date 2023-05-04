@@ -20,7 +20,6 @@ public class GlobalItemActivity extends FragmentActivity {
 
             ParseXmlTask parseXmlTask = new ParseXmlTask(getApplicationContext(),"", parsedRowList -> {
                 rowList = parsedRowList;
-                Log.d("checka", "rowList.rows.size(): " + rowList.rows.size());
                 for (Row row : rowList.rows) {
                     for (Video video : row.items) {
                         for (VideoDetailsRow detailsRow : video.videoDetailsRows) {
