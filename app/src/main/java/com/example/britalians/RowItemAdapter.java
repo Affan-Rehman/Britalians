@@ -1,14 +1,11 @@
 package com.example.britalians;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,15 +21,14 @@ public class RowItemAdapter extends RecyclerView.Adapter<RowItemAdapter.ViewHold
         this.context = context;
     }
 
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_video, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder( ViewHolder holder, int position) {
         RowItems rowItem = rowItems.get(position);
         holder.bind(rowItem);
     }
@@ -46,7 +42,7 @@ public class RowItemAdapter extends RecyclerView.Adapter<RowItemAdapter.ViewHold
         ImageView image;
         View focusIndicator;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder( View itemView) {
             super(itemView);
             focusIndicator = itemView.findViewById(R.id.row_item_focus_indicator);
             itemView.setFocusable(true);

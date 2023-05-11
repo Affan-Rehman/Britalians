@@ -4,9 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,15 +19,14 @@ public class VideoDetailsRowAdapter extends RecyclerView.Adapter<VideoDetailsRow
         this.context = context;
     }
 
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_details_row_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder( ViewHolder holder, int position) {
         VideoDetailsRow videoDetailsRow = videoDetailsRows.get(position);
         List<RowItems> rowItems = videoDetailsRow.row_items;
 
@@ -47,7 +44,7 @@ public class VideoDetailsRowAdapter extends RecyclerView.Adapter<VideoDetailsRow
 
         private RecyclerView rowItemsRecyclerView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder( View itemView) {
             super(itemView);
             rowItemsRecyclerView = itemView.findViewById(R.id.row_itemsRecyclerViewok);
         }

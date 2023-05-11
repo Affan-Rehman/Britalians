@@ -23,7 +23,7 @@ public class RowAdapter extends RecyclerView.Adapter<RowAdapter.RowViewHolder> {
     VideoAdapter.OnVideoSelectedListener onVideoSelectedListener;
     VideoAdapter.OnVideoFocusedListener onVideoFocusedListener;
 
-
+    int mScrollPosition = 0;
     public static final int TYPE_VIDEO_ROW = 0;
     public static final int TYPE_SERIE_LIST_ROW = 1;
 
@@ -76,15 +76,17 @@ public class RowAdapter extends RecyclerView.Adapter<RowAdapter.RowViewHolder> {
             holder.recyclerView.setAdapter(new VideoAdapter(row.items, onVideoSelectedListener, onVideoFocusedListener));
             holder.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
-                public void onScrolled( RecyclerView recyclerView, int dx, int dy) {
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
+                    mScrollPosition = layoutManager.findFirstVisibleItemPosition();
 
                     if (dy > 0) { // Scrolling down
-                        Log.d("checka","called");
                         View nextFocusedView = recyclerView.focusSearch(holder.recyclerView, View.FOCUS_DOWN);
                         if (nextFocusedView != null && nextFocusedView != holder.recyclerView) {
                             nextFocusedView.requestFocus();
                         }
+                    } else if (dy < 0) { // Scrolling up
+                        layoutManager.scrollToPositionWithOffset(mScrollPosition, 0);
                     }
                 }
             });

@@ -256,17 +256,17 @@ public class myXmlParser {
                                              case "dim":
                                                  media.dim = readText(parser);
                                                  break;
-                                             case "media:description":
+                                             case "description":
                                                  media.description = readText(parser);
                                                  break;
-                                             case "media:keywords":
+                                             case "keywords":
                                                  media.keywords = readText(parser);
                                                  break;
-                                             case "media:thumbnail":
+                                             case "thumbnail":
                                                  media.thumbnail_url = parser.getAttributeValue(null, "url");
                                                  parser.nextTag();
                                                  break;
-                                             case "media:title":
+                                             case "title":
                                                  media.title = readText(parser);
                                                  break;
                                          }

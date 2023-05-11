@@ -1,6 +1,7 @@
 package com.example.britalians;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,11 +11,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import java.util.Objects;
 
@@ -68,7 +72,32 @@ public class MovieFragment extends Fragment {
                 video_desc.setText(null);
                 season_size.setText(null);
                 hd.setVisibility(View.INVISIBLE);
-                Glide.with(this).load(focusedRowItem.details_logo).into(logo);
+                Glide.with(this)
+                        .asBitmap()
+                        .load(focusedRowItem.details_logo)
+                        .into(new SimpleTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                int imageWidth = resource.getWidth();
+                                int imageHeight = resource.getHeight();
+
+                                // Get the ImageView LayoutParams
+                                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) logo.getLayoutParams();
+
+                                // Set a fixed height in dp
+                                int fixedHeightDp = 60;
+                                params.height = dpToPx(fixedHeightDp);
+
+                                // Adjust the width to maintain the image's aspect ratio
+                                params.width = (int) (params.height * ((float) imageWidth / imageHeight));
+
+                                // Apply the updated LayoutParams to the ImageView
+                                logo.setLayoutParams(params);
+
+                                // Now that we've adjusted the size of the ImageView, load the image into it
+                                Glide.with(content).load(focusedRowItem.details_logo).into(logo);
+                            }
+                        });
                 content.setText(focusedRowItem.details_name);
                 Glide.with(this).load(focusedRowItem.details_thumbnail169).into(top_right);
             }
@@ -76,7 +105,32 @@ public class MovieFragment extends Fragment {
                 if(Objects.equals(video.rating, ""))
                     video.rating = "16+";
                 season_size.setText(video.releaseyear + "      " + video.rating + "      " + video.duration);
-                Glide.with(this).load(video.serieslogo).into(logo);
+                Glide.with(this)
+                        .asBitmap()
+                        .load(video.serieslogo)
+                        .into(new SimpleTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                int imageWidth = resource.getWidth();
+                                int imageHeight = resource.getHeight();
+
+                                // Get the ImageView LayoutParams
+                                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) logo.getLayoutParams();
+
+                                // Set a fixed height in dp
+                                int fixedHeightDp = 60;
+                                params.height = dpToPx(fixedHeightDp);
+
+                                // Adjust the width to maintain the image's aspect ratio
+                                params.width = (int) (params.height * ((float) imageWidth / imageHeight));
+
+                                // Apply the updated LayoutParams to the ImageView
+                                logo.setLayoutParams(params);
+
+                                // Now that we've adjusted the size of the ImageView, load the image into it
+                                Glide.with(content).load(video.serieslogo).into(logo);
+                            }
+                        });
                 hd.setVisibility(View.VISIBLE);
                 Glide.with(this).load(video.thumbnail169).into(top_right);
                 video_desc.setText(video.description);
@@ -114,4 +168,9 @@ public class MovieFragment extends Fragment {
 
         return root;
     }
+    int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
+    }
+
 }

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +50,8 @@ public class SeasonActivity extends FragmentActivity  implements VideoAdapter.On
     @Override
     public void onVideoFocused(Video video) {
         // Update ImageView and TextView based on the focused video
-        Glide.with(this).load(video.serieslogo).into(logo);
+        Glide.with(this).load(serie.serie_page_image).into(logo);
+        Log.d("checka 1",serie.serie_page_image);
         hd.setBackground(getResources().getDrawable(R.drawable.ic_hd));
         // For example, using Glide:
         Glide.with(this)

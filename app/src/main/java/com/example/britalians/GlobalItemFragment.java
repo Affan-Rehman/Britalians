@@ -1,8 +1,10 @@
 package com.example.britalians;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import java.util.List;
 
@@ -54,6 +58,14 @@ public class GlobalItemFragment extends Fragment implements VideoAdapter.OnVideo
 
         VideoAdapter videoAdapter = new VideoAdapter(row.items, this, this);
         videoRecyclerView.setAdapter(videoAdapter);
+        if (!row.items.isEmpty()) {
+            videoRecyclerView.requestFocus();
+            videoRecyclerView.scrollToPosition(0);
+        }
+        else {
+            content.setText("No contents available");
+            content.setTextSize(30);
+        }
         return root;
     }
 
@@ -66,7 +78,32 @@ public class GlobalItemFragment extends Fragment implements VideoAdapter.OnVideo
 
     @Override
     public void onVideoFocused(Video video) {
-        Glide.with(this).load(video.serieslogo).into(logo);
+        Glide.with(this)
+                .asBitmap()
+                .load(video.serieslogo)
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        int imageWidth = resource.getWidth();
+                        int imageHeight = resource.getHeight();
+
+                        // Get the ImageView LayoutParams
+                        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) logo.getLayoutParams();
+
+                        // Set a fixed height in dp
+                        int fixedHeightDp = 60;
+                        params.height = dpToPx(fixedHeightDp);
+
+                        // Adjust the width to maintain the image's aspect ratio
+                        params.width = (int) (params.height * ((float) imageWidth / imageHeight));
+
+                        // Apply the updated LayoutParams to the ImageView
+                        logo.setLayoutParams(params);
+
+                        // Now that we've adjusted the size of the ImageView, load the image into it
+                        Glide.with(content).load(video.serieslogo).into(logo);
+                    }
+                });
         // For example, using Glide:
         Glide.with(this)
                 .load(video.thumbnail169)
@@ -74,5 +111,9 @@ public class GlobalItemFragment extends Fragment implements VideoAdapter.OnVideo
         video_desc.setText(video.description);
         content.setText(video.title);
 
+    }
+    int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }

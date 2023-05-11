@@ -1,8 +1,14 @@
 package com.example.britalians;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.sun.istack.Nullable;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -47,15 +57,18 @@ public class GlobalFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_global, container, false);
         try {
-            if(type.equals("global"))
-                items = StateXmlParser.parseStateXml(context,R.xml.states);
-            else if(type.equals("brands"))
-                items = StateXmlParser.parseStateXml(context,R.xml.brands);
-            else if(type.equals("humans"))
-                items = StateXmlParser.parseStateXml(context,R.xml.humans);
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            switch (type) {
+                case "global":
+                    items = StateXmlParser.parseStateXml(context, R.xml.states);
+                    break;
+                case "brands":
+                    items = StateXmlParser.parseStateXml(context, R.xml.brands);
+                    break;
+                case "humans":
+                    items = StateXmlParser.parseStateXml(context, R.xml.humans);
+                    break;
+            }
+        } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
 
@@ -67,15 +80,49 @@ public class GlobalFragment extends Fragment  {
         rowItemAdapter = new StateAdapter(items.row_items,this);
 
         recyclerView.setAdapter(rowItemAdapter);
+        recyclerView.requestFocus();
+        recyclerView.scrollToPosition(0);
         return view;
     }
     public void updateFocusedRowItem(RowItems rowItem) {
         Glide.with(this)
                 .load(rowItem.details_thumbnail169)
                 .into(topRightImageView);
+
         titleTextView.setText(rowItem.details_name);
         Glide.with(this)
                 .load(rowItem.details_logo)
                 .into(logoImageView);
+
+        Glide.with(this)
+                .asBitmap()
+                .load(rowItem.details_logo)
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        int imageWidth = resource.getWidth();
+                        int imageHeight = resource.getHeight();
+
+                        // Get the ImageView LayoutParams
+                        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) logoImageView.getLayoutParams();
+
+                        // Set a fixed height in dp
+                        int fixedHeightDp = 60;
+                        params.height = dpToPx(fixedHeightDp);
+
+                        // Adjust the width to maintain the image's aspect ratio
+                        params.width = (int) (params.height * ((float) imageWidth / imageHeight));
+
+                        // Apply the updated LayoutParams to the ImageView
+                        logoImageView.setLayoutParams(params);
+
+                        // Now that we've adjusted the size of the ImageView, load the image into it
+                        Glide.with(getContext()).load(rowItem.details_logo).into(logoImageView);
+                    }
+                });
+    }    int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
+
 }
