@@ -39,31 +39,31 @@ public class MainActivity extends FragmentActivity {
         loadListFromXml(parsedRowList -> {
             MainFragment fragment1 = new MainFragment(getApplicationContext(), parsedRowList);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_one, fragment1).commit();
+                    .replace(R.id.frame_one, fragment1).commitAllowingStateLoss();
         });
 
         home.setOnClickListener(view -> {
             loadListFromXml(parsedRowList -> {
                 MainFragment fragment1 = new MainFragment(getApplicationContext(), parsedRowList);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame_one, fragment1).commit();
+                        .replace(R.id.frame_one, fragment1).commitAllowingStateLoss();
             });
         });
 
         globe.setOnClickListener(view -> {
             GlobalFragment fragment1 = new GlobalFragment(getApplicationContext(), "global");
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_one, fragment1).commit();
+                    .replace(R.id.frame_one, fragment1).commitAllowingStateLoss();
         });
         tag.setOnClickListener(view -> {
             GlobalFragment fragment1 = new GlobalFragment(getApplicationContext(), "brands");
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_one, fragment1).commit();
+                    .replace(R.id.frame_one, fragment1).commitAllowingStateLoss();
         });
         people.setOnClickListener(view -> {
             GlobalFragment fragment1 = new GlobalFragment(getApplicationContext(), "humans");
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_one, fragment1).commit();
+                    .replace(R.id.frame_one, fragment1).commitAllowingStateLoss();
         });
         exit.setOnClickListener(view -> {
             ExitDialogFragment exitDialogFragment = new ExitDialogFragment();
@@ -74,14 +74,9 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void loadListFromXml(OnRowListLoadCompleteListener callback) {
-        String xmlUrl = "https://example.com/path/to/your/xml/file.xml";
+        String xmlUrl = "https://btv-rss.s3.eu-west-2.amazonaws.com/uniquerss.rss";
 
-        ParseXmlTask parseXmlTask = new ParseXmlTask(getApplicationContext(), xmlUrl, new ParseXmlTask.OnParseXmlCompleteListener() {
-            @Override
-            public void onParseXmlComplete(RowList parsedRowList) {
-                callback.onRowListLoadComplete(parsedRowList);
-            }
-        });
+        ParseXmlTask parseXmlTask = new ParseXmlTask(getApplicationContext(), xmlUrl, parsedRowList -> callback.onRowListLoadComplete(parsedRowList));
         parseXmlTask.execute();
     }
 

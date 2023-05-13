@@ -1,15 +1,13 @@
 package com.example.britalians;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -51,7 +49,6 @@ public class SeasonActivity extends FragmentActivity  implements VideoAdapter.On
     public void onVideoFocused(Video video) {
         // Update ImageView and TextView based on the focused video
         Glide.with(this).load(serie.serie_page_image).into(logo);
-        Log.d("checka 1",serie.serie_page_image);
         hd.setBackground(getResources().getDrawable(R.drawable.ic_hd));
         // For example, using Glide:
         Glide.with(this)

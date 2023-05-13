@@ -55,7 +55,7 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateHolder>
 
     @Override
     public int getItemCount() {
-        return rowItemsList.size();
+        return rowItemsList != null ? rowItemsList.size() : 0;
     }
 
     static class StateHolder extends RecyclerView.ViewHolder {

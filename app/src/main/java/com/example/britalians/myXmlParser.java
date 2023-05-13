@@ -9,7 +9,10 @@ import android.util.Xml;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +25,21 @@ public class myXmlParser {
         SerieList serieList = new SerieList();
         int count = 0;
         int counter = 0;
-//        URL url = new URL(xmlUrl);
-//        XmlPullParser parser = Xml.newPullParser();
-//        parser.setInput(url.openStream(), null);
-        Resources res = context.getResources();
-        XmlResourceParser parser = res.getXml(R.xml.sample);
+
+         final int BUFFER_SIZE = 4096;
+        HttpURLConnection connection;
+        InputStream inputStream;
+        URL url = new URL(xmlUrl);
+        connection = (HttpURLConnection) url.openConnection();
+        connection.setConnectTimeout(5000); // Adjust the connection timeout if needed
+        connection.setReadTimeout(5000); // Adjust the read timeout if needed
+
+        inputStream = new BufferedInputStream(connection.getInputStream(), BUFFER_SIZE);
+
+        XmlPullParser parser = Xml.newPullParser();
+        parser.setInput(inputStream, null);
+//        Resources res = context.getResources();
+//        XmlResourceParser parser = res.getXml(R.xml.sample);
 
         int eventType = parser.getEventType();
         Row currentRow = null;

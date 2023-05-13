@@ -2,33 +2,22 @@ package com.example.britalians;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.sun.istack.Nullable;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-
-public class GlobalFragment extends Fragment  {
+public class GlobalFragment extends Fragment implements StateXmlParser.OnXmlParseCompleteListener  {
     Context context;
     VideoDetailsRow items;
     ImageView logoImageView;
@@ -54,34 +43,30 @@ public class GlobalFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_global, container, false);
-        try {
-            switch (type) {
-                case "global":
-                    items = StateXmlParser.parseStateXml(context, R.xml.states);
-                    break;
-                case "brands":
-                    items = StateXmlParser.parseStateXml(context, R.xml.brands);
-                    break;
-                case "humans":
-                    items = StateXmlParser.parseStateXml(context, R.xml.humans);
-                    break;
-            }
-        } catch (XmlPullParserException | IOException e) {
-            e.printStackTrace();
-        }
+        View view = inflater.inflate(R.layout.fragment_global, container, false);
 
         logoImageView = view.findViewById(R.id.logo_image_view);
         topRightImageView = view.findViewById(R.id.top_right_image_view);
         titleTextView = view.findViewById(R.id.title_text_view);
         recyclerView = view.findViewById(R.id.recycler_view);
 
-        rowItemAdapter = new StateAdapter(items.row_items,this);
-
+        rowItemAdapter = new StateAdapter(null, this);
         recyclerView.setAdapter(rowItemAdapter);
         recyclerView.requestFocus();
         recyclerView.scrollToPosition(0);
+
+        switch (type) {
+            case "global":
+                StateXmlParser.parseStateXml(context, "https://btv-rss.s3.eu-west-2.amazonaws.com/pages/states.rss", this);
+                break;
+            case "brands":
+                StateXmlParser.parseStateXml(context, "https://btv-rss.s3.eu-west-2.amazonaws.com/pages/brands.rss", this);
+                break;
+            case "humans":
+                StateXmlParser.parseStateXml(context, "https://btv-rss.s3.eu-west-2.amazonaws.com/pages/humans.rss", this);
+                break;
+        }
+
         return view;
     }
     public void updateFocusedRowItem(RowItems rowItem) {
@@ -125,4 +110,15 @@ public class GlobalFragment extends Fragment  {
         return Math.round(dp * density);
     }
 
+    @Override
+    public void onXmlParseComplete(VideoDetailsRow videoDetailsRow) {
+        items = videoDetailsRow;
+
+        if (items != null && items.row_items != null) {
+            rowItemAdapter = new StateAdapter(items.row_items, this);
+            recyclerView.setAdapter(rowItemAdapter);
+            recyclerView.requestFocus();
+            recyclerView.scrollToPosition(0);
+        }
+    }
 }
