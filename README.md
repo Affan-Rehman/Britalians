@@ -1,5 +1,9 @@
 # BritaliansTV: The Quintessential Netflix-Style App for an Unrivaled, Engaging Binge-Watching Experience
 
+
+https://github.com/Affan-Rehman/Britalians/assets/112381046/047f13eb-6703-407f-8c76-d92e04a56aa0
+
+
 🎬 Prepare to be captivated by BritaliansTV, my magnum opus and a resplendent Netflix-style app that promises to revolutionize the way you explore, discover, and revel in your favorite series, movies, and a myriad of enthralling content! 🍿
 
 Meticulously crafted with exceptional attention to detail, this state-of-the-art Android application delivers a seamless, immersive, and visually captivating streaming experience that stands unrivaled in the realm of digital entertainment. With an extensive collection of content meticulously organized into series, seasons, and episodes, BritaliansTV goes above and beyond by also showcasing a wealth of additional information such as associated brands, locations, and stars for each production. A stunning interface, effortless navigation, and integrated ads make BritaliansTV your ultimate go-to destination for satisfying all your entertainment cravings.
